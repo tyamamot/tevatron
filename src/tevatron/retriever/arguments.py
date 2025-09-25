@@ -207,8 +207,24 @@ class DataArguments:
 
 @dataclass
 class TevatronTrainingArguments(TrainingArguments):
-    warmup_ratio: float = field(default=0.1)
+    ### Added
+    lr_scheduler_type: str = field(
+         default="constant", metadata={"help": "The scheduler type to use."}
+     )
+    ###
+ 
+    # warmup_ratio default changed from 0.1 -> 0.0
+    warmup_ratio: float = field(default=0.0)
+    # Previous default:
+    # warmup_ratio: float = field(default=0.1)
 
     grad_cache: bool = field(default=False, metadata={"help": "Use gradient cache update"})
     gc_q_chunk_size: int = field(default=4)
     gc_p_chunk_size: int = field(default=32)
+    ### Added
+    save_safetensors: bool = field(
+        default=False,
+        metadata={"help": "Use safetensors to save the model"}
+    )
+    ###
+    

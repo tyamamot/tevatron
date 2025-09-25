@@ -116,6 +116,9 @@ class EncoderModel(nn.Module):
             train_args: TrainingArguments,
             **hf_kwargs,
     ):  
+        ### Added
+        hf_kwargs.pop("attn_implementation", None)
+        ###
         base_model = cls.TRANSFORMER_CLS.from_pretrained(model_args.model_name_or_path, **hf_kwargs)
         if base_model.config.pad_token_id is None:
             base_model.config.pad_token_id = 0
@@ -158,6 +161,9 @@ class EncoderModel(nn.Module):
              normalize: bool = False,
              lora_name_or_path: str = None,
              **hf_kwargs):
+        ### Added
+        hf_kwargs.pop("attn_implementation", None)
+        ###
         base_model = cls.TRANSFORMER_CLS.from_pretrained(model_name_or_path, **hf_kwargs)
         if base_model.config.pad_token_id is None:
             base_model.config.pad_token_id = 0
