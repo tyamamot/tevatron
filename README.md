@@ -1,7 +1,7 @@
 # Tevatron with Custom Modifications
 
 This repository is a fork of the [Tevatron](https://github.com/texttron/tevatron) project
-and includes several custom changes for our experiments.
+and includes several custom changes.
 
 ## Modifications
 - Flash Attention disabled
